@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 20:57:09 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:05:04 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,9 @@ int	main(int argc, char **argv)
 	while (ci < argc)
 		ft_lstadd_back(a, ft_lstnew(argv[ci++]));
 	push(b, a);
-	push(b, a);
-	push(b, a);
-	push(b, a);
-	push(b, a);
-	// swap(b);
-	c = *b;
+	rotate(a);
+	rotate(a);
+	c = *a;
 	while (c)
 	{
 		ft_printf("%d\n", ft_atoi(c->content));
