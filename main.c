@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 20:39:04 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:57:09 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int	main(int argc, char **argv)
 {
 	t_list	**a;
+	t_list	**b;
 	t_list	*c;
 	int		ci;
 
@@ -26,10 +27,16 @@ int	main(int argc, char **argv)
 	ci = 1;
 	a = 0;
 	a = (t_list **) malloc(sizeof(t_list *));
+	b = (t_list **) malloc(sizeof(t_list *));
 	while (ci < argc)
 		ft_lstadd_back(a, ft_lstnew(argv[ci++]));
-	swap(a);
-	c = *a;
+	push(b, a);
+	push(b, a);
+	push(b, a);
+	push(b, a);
+	push(b, a);
+	// swap(b);
+	c = *b;
 	while (c)
 	{
 		ft_printf("%d\n", ft_atoi(c->content));
