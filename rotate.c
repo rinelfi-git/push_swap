@@ -6,13 +6,13 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:16:53 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 17:18:26 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:38:00 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    rotate(t_list **lst)
+void	rotate(t_list **lst)
 {
-    
+	swap(lst);
 }

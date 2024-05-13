@@ -6,14 +6,14 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:16:25 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 17:20:18 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/13 20:37:14 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    double_swap(t_list **lst1, t_list **lst2)
+void	double_swap(t_list **lst1, t_list **lst2)
 {
-    swap(lst1);
-    swap(lst2);
+	swap(lst1);
+	swap(lst2);
 }
