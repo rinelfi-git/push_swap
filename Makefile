@@ -15,16 +15,14 @@ FT_LIB = $(FT_D)/libft.a
 
 all	: $(NAME)
 
-$(NAME) : $(PRINTF_LIB) $(FT_LIB)
+$(NAME): push_swap.c $(PRINTF_LIB) $(FT_LIB)
+	$(CC) $(CFLAGS) push_swap.c -L$(FT_D) -l$(FT_A) -L$(PRINTF_D) -l$(PRINTF_A) -o $(NAME)
 
 $(PRINTF_LIB) : $(PRINTF_H)
 	make -C $(PRINTF_D)
 
 $(FT_LIB) : $(FT_H)
-	make -C $(FT_D)
-
-push_swap: push_swap.c $(FT_LIB) $(PRINTF_LIB)
-	$(CC) $(CFLAGS) $@.c -L$(PRINTF_D) -l$(PRINTF_A) -L$(FT_D) -l$(FT_A) -o $@
+	make -C $(FT_D) bonus
 
 clean :
 	make -C $(FT_D) $@
