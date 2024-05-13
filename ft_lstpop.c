@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ft_lstpop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 16:17:28 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 21:10:14 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/13 21:09:14 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/13 21:33:55 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-# include "libs/libft/libft.h"
+#include "push_swap.h"
+#include <stdio.h>
 
-void	swap(t_list **lst);
-void	double_swap(t_list **lst1, t_list **lst2);
-void	push(t_list **lst1, t_list **lst2);
-void	rotate(t_list **lst);
-void	double_rotate(t_list **lst1, t_list **lst2);
-void	reverse_rotate(t_list **lst);
-void	double_reverse_rotate(t_list **lst1, t_list **lst2);
-t_list	*ft_lstpop(t_list **lst);
-#endif
+t_list	*ft_lstpop(t_list **lst)
+{
+	t_list	*last;
+	t_list	*before_last;
+
+	if (!lst || !(*lst))
+		return (0);
+	before_last = *lst;
+	last = before_last->next;
+	while (last->next)
+	{
+		before_last = last;
+		last = before_last->next;
+	}
+	before_last->next = 0;
+	return (last);
+}

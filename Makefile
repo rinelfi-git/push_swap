@@ -6,7 +6,11 @@ DEL = rm -rf
 OPERATIONS =	push.c \
 				reverse_rotate.c \
 				rotate.c \
-				swap.c
+				swap.c \
+				double_reverse_rotate.c \
+				double_rotate.c \
+				double_swap.c \
+				ft_lstpop.c
 OPERATIONS_O = $(OPERATIONS:.c=.o)
 
 PRINTF_D = ./libs/ft_printf

@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 21:05:04 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/13 21:34:45 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,6 @@ int	main(int argc, char **argv)
 	b = (t_list **) malloc(sizeof(t_list *));
 	while (ci < argc)
 		ft_lstadd_back(a, ft_lstnew(argv[ci++]));
-	push(b, a);
-	rotate(a);
-	rotate(a);
 	c = *a;
 	while (c)
 	{
