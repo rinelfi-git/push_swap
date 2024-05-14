@@ -1,6 +1,0 @@
-{
-	"files.associations": {
-		"*.php": "php",
-		"push_swap.h": "c"
-	}
-}
