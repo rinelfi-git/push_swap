@@ -32,7 +32,7 @@ $(PRINTF_LIB) : $(PRINTF_H)
 	make -C $(PRINTF_D)
 
 %.o					: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 $(FT_LIB) : $(FT_H)
 	make -C $(FT_D) bonus
