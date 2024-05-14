@@ -23,6 +23,11 @@ FT_A = ft
 FT_H = $(FT_D)/libft.h
 FT_LIB = $(FT_D)/libft.a
 
+ARRAY_LIST_D = ./libs/int_array
+ARRAY_LIST_A = ft
+ARRAY_LIST_H = $(ARRAY_LIST_D)/int_array.h
+ARRAY_LIST_LIB = $(ARRAY_LIST_D)/int_array.a
+
 all	: $(NAME)
 
 $(NAME): main.c $(OPERATIONS_O) $(PRINTF_LIB) $(FT_LIB)
