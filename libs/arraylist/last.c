@@ -6,13 +6,13 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:45:45 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:01:11 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:10:22 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "int_array.h"
+#include "arraylist.h"
 
-t_arraylist	*int_array_last(t_arraylist **array)
+t_arraylist	*arraylist_last(t_arraylist **array)
 {
 	t_arraylist	*loop;
 

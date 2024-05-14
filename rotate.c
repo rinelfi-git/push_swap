@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:16:53 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:01:11 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:10:22 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	rotate(t_arraylist **lst)
 
 	if (!lst || !(*lst))
 		return ;
-	first = int_array_shift(lst);
-	int_array_push(lst, first->content);
+	first = arraylist_shift(lst);
+	arraylist_push(lst, first->content);
 	free(first);
 	first = 0;
 }

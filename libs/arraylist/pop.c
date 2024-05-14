@@ -6,26 +6,28 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:00:05 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:01:11 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:24:51 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "int_array.h"
+#include "arraylist.h"
 
-t_arraylist	*int_array_pop(t_arraylist **array)
+t_arraylist	*arraylist_pop(t_arraylist **array)
 {
 	t_arraylist	*last;
-	t_arraylist	*before_last;
+	t_arraylist	*before;
 
 	if (!array || !(*array))
 		return (0);
-	before_last = *array;
-	last = before_last->next;
+	last = *array;
 	while (last->next)
 	{
-		before_last = last;
-		last = before_last->next;
+		before = last;
+		last = last->next;
 	}
-	before_last->next = 0;
+	if (last == before)
+		*array = 0;
+	else
+		before->next = 0;
 	return (last);
 }

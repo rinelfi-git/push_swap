@@ -6,14 +6,14 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:37:22 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:01:11 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:10:22 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "int_array.h"
+#include "arraylist.h"
 #include <stdlib.h>
 
-t_arraylist	**int_array_construct(void)
+t_arraylist	**arraylist_construct(void)
 {
 	t_arraylist	**ret;
 
