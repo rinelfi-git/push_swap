@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 13:08:12 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:00:55 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 
 int	main(int argc, char **argv)
 {
-	t_int_array	**a;
-	t_int_array	*b;
+	t_arraylist	**a;
+	t_arraylist	*b;
 	int			ci;
 
 	if (argc <= 1)

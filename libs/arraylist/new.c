@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   new.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 11:41:49 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 12:31:08 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/14 11:53:37 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/14 15:01:11 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "int_array.h"
-#include <stdio.h>
+#include <stdlib.h>
 
-t_int_array	*int_array_push(t_int_array **array, int content)
+t_arraylist	*int_array_new(t_type content)
 {
-	t_int_array	*element;
-	t_int_array	*last;
+	t_arraylist	*ret;
 
-	if (!array)
+	ret = (t_arraylist *) malloc(sizeof(t_arraylist));
+	if (!ret)
 		return (0);
-	element = int_array_new(content);
-	if (!element)
-		return (0);
-	last = int_array_last(array);
-	if (!last)
-		*array = element;
-	else
-		last->next = element;
-	return (element);
+	ret->content = content;
+	ret->next = 0;
+	return (ret);
 }

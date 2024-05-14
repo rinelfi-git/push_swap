@@ -1,8 +1,8 @@
 CC			=	cc
 CFLAGS		=	-Werror -Wextra -Wall
 AR			=	ar rcs
-NAME		=	libint_array.a
-HEADER		=	int_array.h
+NAME		=	libarraylist.a
+HEADER		=	arraylist.h
 DEL			=	rm -rf
 SOURCES		=	construct.c \
 				last.c \

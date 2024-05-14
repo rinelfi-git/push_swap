@@ -22,18 +22,18 @@ FT_A = ft
 FT_H = $(FT_D)/libft.h
 FT_LIB = $(FT_D)/libft.a
 
-ARRAY_LIST_D = ./libs/int_array
-ARRAY_LIST_A = int_array
-ARRAY_LIST_H = $(ARRAY_LIST_D)/int_array.h
-ARRAY_LIST_LIB = $(ARRAY_LIST_D)/libint_array.a
+ARRAYLIST_D = ./libs/arraylist
+ARRAYLIST_A = arraylist
+ARRAYLIST_H = $(ARRAYLIST_D)/arraylist.h
+ARRAYLIST_LIB = $(ARRAYLIST_D)/libarraylist.a
 
 all	: $(NAME)
 
-$(NAME): main.c $(OPERATIONS_O) $(PRINTF_LIB) $(FT_LIB) $(ARRAY_LIST_LIB)
+$(NAME): main.c $(OPERATIONS_O) $(PRINTF_LIB) $(FT_LIB) $(ARRAYLIST_LIB)
 	$(CC) $(CFLAGS) main.c $(OPERATIONS_O) \
 	-L$(FT_D) -l$(FT_A) \
 	-L$(PRINTF_D) -l$(PRINTF_A) \
-	-L$(ARRAY_LIST_D) -l$(ARRAY_LIST_A) \
+	-L$(ARRAYLIST_D) -l$(ARRAYLIST_A) \
 	-o $(NAME)
 
 $(PRINTF_LIB) : $(PRINTF_H)
@@ -42,8 +42,8 @@ $(PRINTF_LIB) : $(PRINTF_H)
 $(FT_LIB) : $(FT_H)
 	make -C $(FT_D)
 
-$(ARRAY_LIST_LIB) : $(ARRAY_LIST_H)
-	make -C $(ARRAY_LIST_D)
+$(ARRAYLIST_LIB) : $(ARRAYLIST_H)
+	make -C $(ARRAYLIST_D)
 
 %.o					: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
@@ -52,12 +52,12 @@ clean :
 	$(DEL) $(OPERATIONS_O)
 	make -C $(FT_D) $@
 	make -C $(PRINTF_D) $@
-	make -C $(ARRAY_LIST_D) $@
+	make -C $(ARRAYLIST_D) $@
 
 fclean : clean
 	$(DEL) $(NAME)
 	make -C $(FT_D) $@
 	make -C $(PRINTF_D) $@
-	make -C $(ARRAY_LIST_D) $@
+	make -C $(ARRAYLIST_D) $@
 
 re : fclean all

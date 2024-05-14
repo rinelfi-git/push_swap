@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   last.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 12:00:05 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 12:17:42 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/14 11:45:45 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/14 15:01:11 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "int_array.h"
 
-t_int_array	*int_array_pop(t_int_array **array)
+t_arraylist	*int_array_last(t_arraylist **array)
 {
-	t_int_array	*last;
-	t_int_array	*before_last;
+	t_arraylist	*loop;
 
-	if (!array || !(*array))
+	if (!array)
 		return (0);
-	before_last = *array;
-	last = before_last->next;
-	while (last->next)
-	{
-		before_last = last;
-		last = before_last->next;
-	}
-	before_last->next = 0;
-	return (last);
+	loop = *array;
+	while (loop && loop->next)
+		loop = loop->next;
+	return (loop);
 }
