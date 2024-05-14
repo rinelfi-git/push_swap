@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 12:00:05 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:24:51 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 16:11:30 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_arraylist	*arraylist_pop(t_arraylist **array)
 		before = last;
 		last = last->next;
 	}
-	if (last == before)
+	if (last == *array)
 		*array = 0;
 	else
 		before->next = 0;

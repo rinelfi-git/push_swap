@@ -6,14 +6,14 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:41:49 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:10:22 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:57:23 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "arraylist.h"
 #include <stdio.h>
 
-t_arraylist	*arraylist_push(t_arraylist **array, int content)
+t_arraylist	*arraylist_push(t_arraylist **array, t_type content)
 {
 	t_arraylist	*element;
 	t_arraylist	*last;

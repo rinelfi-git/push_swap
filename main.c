@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:10:22 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 15:35:06 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,15 @@ int	main(int argc, char **argv)
 	a = arraylist_construct();
 	while (ci < argc)
 		arraylist_push(a, ft_atoi(argv[ci++]));
+	reverse_rotate(a);
+	reverse_rotate(a);
+	reverse_rotate(a);
+	reverse_rotate(a);
+	reverse_rotate(a);
+	reverse_rotate(a);
+	reverse_rotate(a);
+	reverse_rotate(a);
+	reverse_rotate(a);
 	reverse_rotate(a);
 	reverse_rotate(a);
 	b = *a;
