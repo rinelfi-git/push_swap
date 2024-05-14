@@ -9,8 +9,7 @@ OPERATIONS =	push.c \
 				swap.c \
 				double_reverse_rotate.c \
 				double_rotate.c \
-				double_swap.c \
-				ft_lstpop.c
+				double_swap.c
 OPERATIONS_O = $(OPERATIONS:.c=.o)
 
 PRINTF_D = ./libs/ft_printf
@@ -24,32 +23,41 @@ FT_H = $(FT_D)/libft.h
 FT_LIB = $(FT_D)/libft.a
 
 ARRAY_LIST_D = ./libs/int_array
-ARRAY_LIST_A = ft
+ARRAY_LIST_A = int_array
 ARRAY_LIST_H = $(ARRAY_LIST_D)/int_array.h
-ARRAY_LIST_LIB = $(ARRAY_LIST_D)/int_array.a
+ARRAY_LIST_LIB = $(ARRAY_LIST_D)/libint_array.a
 
 all	: $(NAME)
 
-$(NAME): main.c $(OPERATIONS_O) $(PRINTF_LIB) $(FT_LIB)
-	$(CC) $(CFLAGS) main.c $(OPERATIONS_O) -L$(FT_D) -l$(FT_A) -L$(PRINTF_D) -l$(PRINTF_A) -o $(NAME)
+$(NAME): main.c $(OPERATIONS_O) $(PRINTF_LIB) $(FT_LIB) $(ARRAY_LIST_LIB)
+	$(CC) $(CFLAGS) main.c $(OPERATIONS_O) \
+	-L$(FT_D) -l$(FT_A) \
+	-L$(PRINTF_D) -l$(PRINTF_A) \
+	-L$(ARRAY_LIST_D) -l$(ARRAY_LIST_A) \
+	-o $(NAME)
 
 $(PRINTF_LIB) : $(PRINTF_H)
 	make -C $(PRINTF_D)
 
+$(FT_LIB) : $(FT_H)
+	make -C $(FT_D)
+
+$(ARRAY_LIST_LIB) : $(ARRAY_LIST_H)
+	make -C $(ARRAY_LIST_D)
+
 %.o					: %.c
 	$(CC) $(CFLAGS) -o $@ -c $<
-
-$(FT_LIB) : $(FT_H)
-	make -C $(FT_D) bonus
 
 clean :
 	$(DEL) $(OPERATIONS_O)
 	make -C $(FT_D) $@
 	make -C $(PRINTF_D) $@
+	make -C $(ARRAY_LIST_D) $@
 
 fclean : clean
 	$(DEL) $(NAME)
 	make -C $(FT_D) $@
 	make -C $(PRINTF_D) $@
+	make -C $(ARRAY_LIST_D) $@
 
 re : fclean all

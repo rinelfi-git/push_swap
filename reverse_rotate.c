@@ -6,18 +6,21 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:17:18 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 21:22:09 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 12:53:13 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-void	reverse_rotate(t_list **lst)
+void	reverse_rotate(t_int_array **lst)
 {
-	t_list	*last;
+	t_int_array	*last;
 
-	if (!lst || !(*lst))
+	if (!int_array_length(lst))
 		return ;
-	last = ft_lstpop(lst);
-	ft_lstadd_front(lst, last);
+	last = int_array_pop(lst);
+	int_array_unshift(lst, last->content);
+	free(last);
+	last = 0;
 }

@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpop.c                                        :+:      :+:    :+:   */
+/*   length.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 21:09:14 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 21:33:55 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/14 12:47:10 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/14 13:01:13 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdio.h>
+#include "int_array.h"
 
-t_list	*ft_lstpop(t_list **lst)
+size_t	int_array_length(t_int_array **array)
 {
-	t_list	*last;
-	t_list	*before_last;
+	size_t		ret;
+	t_int_array	*loop;
 
-	if (!lst || !(*lst))
+	if (!array || !(*array))
 		return (0);
-	before_last = *lst;
-	last = before_last->next;
-	while (last->next)
+	loop = *array;
+	ret = 0;
+	while (loop)
 	{
-		before_last = last;
-		last = before_last->next;
+		ret++;
+		loop = loop->next;
 	}
-	before_last->next = 0;
-	return (last);
+	return (ret);
 }

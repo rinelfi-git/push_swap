@@ -6,19 +6,21 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:16:34 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/13 20:58:34 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/14 13:00:57 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdlib.h>
 
-void	push(t_list **lst1, t_list **lst2)
+void	push(t_int_array **lst1, t_int_array **lst2)
 {
-	t_list	*first;
+	t_int_array	*first;
 
-	if (!lst1 || !lst2 || ft_lstsize(*lst2) <= 0)
+	if (!lst1 || int_array_length(lst2) <= 0)
 		return ;
-	first = *lst2;
-	*lst2 = (*lst2)->next;
-	ft_lstadd_front(lst1, first);
+	first = int_array_shift(lst2);
+	int_array_unshift(lst1, first->content);
+	free(first);
+	first = 0;
 }

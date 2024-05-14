@@ -6,9 +6,11 @@ HEADER		=	int_array.h
 DEL			=	rm -rf
 SOURCES		=	construct.c \
 				last.c \
+				length.c \
 				new.c \
 				pop.c \
 				push.c \
+				shift.c \
 				unshift.c
 OBJECTS		=	$(SOURCES:.c=.o)
 
