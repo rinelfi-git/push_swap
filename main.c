@@ -6,13 +6,13 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 17:10:17 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:24:28 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libs/libft/libft.h"
 #include "libs/ft_printf/ft_printf.h"
-#include "push_swap.h"
+#include "main.d/push_swap.h"
 #include <stdlib.h>
 
 static void	push_twice(t_arraylist **a, t_arraylist **b)

@@ -2,14 +2,14 @@ CC = cc
 CFLAGS = -Werror -Wextra -Wall
 NAME = push_swap
 DEL = rm -rf
-
-OPERATIONS =	push.c \
-				reverse_rotate.c \
-				rotate.c \
-				swap.c \
-				double_reverse_rotate.c \
-				double_rotate.c \
-				double_swap.c
+MAIN_D = main.d
+OPERATIONS	=	$(MAIN_D)/push.c \
+				$(MAIN_D)/reverse_rotate.c \
+				$(MAIN_D)/rotate.c \
+				$(MAIN_D)/swap.c \
+				$(MAIN_D)/double_reverse_rotate.c \
+				$(MAIN_D)/double_rotate.c \
+				$(MAIN_D)/double_swap.c
 OPERATIONS_O = $(OPERATIONS:.c=.o)
 
 PRINTF_D = ./libs/ft_printf

@@ -6,13 +6,13 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:17:28 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:02:32 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:23:59 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
-# include "libs/arraylist/arraylist.h"
+# include "../libs/arraylist/arraylist.h"
 
 void	swap(t_arraylist **lst);
 void	double_swap(t_arraylist **lst1, t_arraylist **lst2);
