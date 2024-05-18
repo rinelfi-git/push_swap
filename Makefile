@@ -9,6 +9,7 @@ OPERATIONS	=	$(MAIN_D)/push.c \
 				$(MAIN_D)/swap.c \
 				$(MAIN_D)/double_reverse_rotate.c \
 				$(MAIN_D)/double_rotate.c \
+				$(MAIN_D)/push_swap.c \
 				$(MAIN_D)/double_swap.c
 OPERATIONS_O = $(OPERATIONS:.c=.o)
 

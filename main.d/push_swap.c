@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get.c                                              :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/18 15:39:49 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/18 17:38:19 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/18 15:26:44 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/18 17:38:25 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arraylist.h"
-#include <sys/types.h>
+#include "push_swap.h"
 
-t_node	*list_get(t_list *list, size_t index)
+static void	sort_3numbers(t_arraylist **a)
 {
-	size_t	i;
-	t_node	*node;
-
-	if (!list || ((ssize_t) index) < 0)
-		return (0);
-	i = 0;
-	node = list->first;
-	while (i < index && node)
+	if (arraylist_length(a) == 3)
 	{
-		node = node->next;
-		i++;
+		if (arraylist_get(a, 0)->content > )
 	}
-	if (i == index)
-		return (node);
+}
+
+static void	push_to_stack_b(t_arraylist **a, t_arraylist **b)
+{
+	while (arraylist_length(a) > 3)
+	{
+		push(b, a);
+	}
+}
+
+int	push_swap(t_arraylist **a, t_arraylist **b)
+{
+	push_to_stack_b(a, b);
+	sort_3numbers(a);
 	return (0);
 }
