@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/18 16:25:01 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/18 17:40:31 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	main(int argc, char **argv)
 	{
 		if (loop_a)
 		{
-			ft_printf("%d ", loop_a->content);
+			ft_printf("%d  ", loop_a->content);
 			loop_a = loop_a->next;
 		}
 		if (loop_b)
