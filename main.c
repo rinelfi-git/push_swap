@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/18 15:24:28 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:47:21 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	main(int argc, char **argv)
 	while (ci < argc)
 		arraylist_push(a, ft_atoi(argv[ci++]));
 	push_twice(a, b);
+
 	loop_a = *a;
 	loop_b = *b;
 	ft_printf("A\t-\tB\n");

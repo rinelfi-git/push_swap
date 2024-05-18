@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/14 11:25:24 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 16:56:11 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/18 15:46:50 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ t_arraylist	*arraylist_push(t_arraylist **array, t_type content);
 t_arraylist	*arraylist_unshift(t_arraylist **array, t_type content);
 t_arraylist	*arraylist_pop(t_arraylist **array);
 t_arraylist	*arraylist_shift(t_arraylist **array);
-t_arraylist	*arraylist_get(t_arraylist **array, int index);
+t_arraylist	*arraylist_get(t_arraylist **array, size_t index);
 size_t		arraylist_length(t_arraylist **array);
 #endif

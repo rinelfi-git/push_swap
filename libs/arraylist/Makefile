@@ -5,6 +5,7 @@ NAME		=	libarraylist.a
 HEADER		=	arraylist.h
 DEL			=	rm -rf
 SOURCES		=	construct.c \
+				get.c \
 				last.c \
 				length.c \
 				new.c \
