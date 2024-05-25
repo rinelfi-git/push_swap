@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_reverse_rotate.c                            :+:      :+:    :+:   */
+/*   destruct.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:17:33 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 10:32:43 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 06:58:18 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 11:22:05 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../array.h"
+#include <stdlib.h>
 
-void	double_reverse_rotate(t_list *lst1, t_list *lst2)
+void	array_destruct(t_array *array)
 {
-	reverse_rotate(lst1);
-	reverse_rotate(lst2);
+	t_item	*item;
+
+	if (!array)
+		return ;
+	item = item_remove(array, 0);
+	while (item)
+	{
+		item_destruct(item);
+		item = item_remove(array, 0);
+	}
+	free(array);
+	array = 0;
 }

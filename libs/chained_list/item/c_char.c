@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pop.c                                              :+:      :+:    :+:   */
+/*   c_char.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 12:00:05 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 16:11:30 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 07:42:32 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 11:22:05 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arraylist.h"
+#include "../array.h"
+#include <stdlib.h>
 
-t_arraylist	*arraylist_pop(t_arraylist **array)
+char	*c_char(char value)
 {
-	t_arraylist	*last;
-	t_arraylist	*before;
+	char	*_c_char;
 
-	if (!array || !(*array))
+	_c_char = (char *) malloc(sizeof(char));
+	if (!_c_char)
 		return (0);
-	last = *array;
-	while (last->next)
-	{
-		before = last;
-		last = last->next;
-	}
-	if (last == *array)
-		*array = 0;
-	else
-		before->next = 0;
-	return (last);
+	*_c_char = value;
+	return (_c_char);
 }

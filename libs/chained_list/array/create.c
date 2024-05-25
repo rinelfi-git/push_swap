@@ -1,47 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new.c                                              :+:      :+:    :+:   */
+/*   create.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 11:53:37 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/18 17:36:59 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/24 19:48:25 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 11:22:05 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arraylist.h"
+#include "../array.h"
 #include <stdlib.h>
 
-t_node	*node_new(t_type content)
+t_array	*array_create(t_item *item)
 {
-	t_node	*node;
+	t_array	*_array_create;
 
-	node = (t_node *) malloc(sizeof(t_node));
-	if (!node)
+	_array_create = (t_array *)malloc(sizeof(t_array));
+	if (!_array_create)
 		return (0);
-	node->c = content;
-	node->next = 0;
-	node->prev = 0;
-	return (node);
-}
-
-t_list	*list_new(t_node **first)
-{
-	t_list	*list;
-
-	list = (t_list *) malloc(sizeof(t_list));
-	if (!list)
-		return (0);
-	if (first)
+	_array_create->first = 0;
+	_array_create->last = 0;
+	if (item)
 	{
-		list->first = *first;
-		list->last = *first;
+		_array_create->first = item;
+		_array_create->last = item;
 	}
-	else 
-	{
-		list->first = 0;
-		list->last = 0;
-	}
-	return (list);
+	return (_array_create);
 }

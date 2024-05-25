@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   size.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 11:41:49 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 15:57:23 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/24 20:10:04 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 11:22:05 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arraylist.h"
-#include <stdio.h>
+#include "../array.h"
 
-t_arraylist	*arraylist_push(t_arraylist **array, t_type content)
+int	array_size(t_array *array)
 {
-	t_arraylist	*element;
-	t_arraylist	*last;
+	int		_array_size;
+	t_item	*item;
 
+	_array_size = 0;
 	if (!array)
-		return (0);
-	element = arraylist_new(content);
-	if (!element)
-		return (0);
-	last = arraylist_last(array);
-	if (!last)
-		*array = element;
-	else
-		last->next = element;
-	return (element);
+		return (_array_size);
+	item = array->first;
+	while (item)
+	{
+		item = item->next;
+		_array_size++;
+	}
+	return (_array_size);
 }

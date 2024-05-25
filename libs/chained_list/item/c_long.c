@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   length.c                                           :+:      :+:    :+:   */
+/*   c_long.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 12:47:10 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/18 17:31:39 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 07:42:32 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 11:22:05 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arraylist.h"
+#include "../array.h"
+#include <stdlib.h>
 
-size_t	list_length(t_list *list)
+long	*c_long(long value)
 {
-	size_t	i;
-	t_node	*loop;
+	long	*_c_long;
 
-	if (!list)
+	_c_long = (long *) malloc(sizeof(long));
+	if (!_c_long)
 		return (0);
-	loop = list->first;
-	i = 0;
-	while (loop)
-	{
-		i++;
-		loop = loop->next;
-	}
-	return (i);
+	*_c_long = value;
+	return (_c_long);
 }

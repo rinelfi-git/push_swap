@@ -6,22 +6,15 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:16:12 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/18 15:24:09 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 10:49:29 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(t_arraylist **lst)
+void	swap(t_list *lst, int print)
 {
-	t_arraylist	*first;
-	t_arraylist	*second;
-
-	if (arraylist_length(lst) <= 1)
+	if (list_size(lst) <= 1)
 		return ;
-	first = *lst;
-	second = first->next;
-	first->next = second->next;
-	*lst = second;
-	second->next = first;
+	list_add_at(lst, item_get(lst, 1), 0);
 }

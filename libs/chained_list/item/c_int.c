@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   construct.c                                        :+:      :+:    :+:   */
+/*   c_int.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/14 11:37:22 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/14 16:16:15 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 07:42:32 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 11:22:05 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "arraylist.h"
+#include "../array.h"
 #include <stdlib.h>
 
-t_arraylist	**arraylist_construct(void)
+int	*c_int(int value)
 {
-	t_arraylist	**ret;
+	int	*_c_int;
 
-	ret = (t_arraylist **) malloc(sizeof(t_arraylist));
-	if (!ret)
+	_c_int = (int *) malloc(sizeof(int));
+	if (!_c_int)
 		return (0);
-	*ret = 0;
-	return (ret);
+	*_c_int = value;
+	return (_c_int);
 }

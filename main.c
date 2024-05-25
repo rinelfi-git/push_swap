@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/18 17:40:31 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 11:17:11 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,26 @@
 
 int	main(int argc, char **argv)
 {
-	t_arraylist	**a;
-	t_arraylist	**b;
-	t_arraylist	*loop_a;
-	t_arraylist	*loop_b;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	t_item	*loop_a;
 	int			ci;
 
 	if (argc <= 1)
 		return (1);
 	ci = 1;
-	a = arraylist_construct();
-	b = arraylist_construct();
+	stack_a = list_create(0);
+	stack_b = list_create(0);
 	while (ci < argc)
-		arraylist_push(a, ft_atoi(argv[ci++]));
-	push_swap(a, b);
+		list_add(stack_a, c_int(ft_atoi(argv[ci++])));
+	push_swap(stack_a, stack_b);
 
-	loop_a = *a;
-	loop_b = *b;
+	loop_a = stack_a->first;
 	ft_printf("A - B\n");
-	while (loop_a || loop_b)
+	while (loop_a)
 	{
-		if (loop_a)
-		{
-			ft_printf("%d  ", loop_a->content);
-			loop_a = loop_a->next;
-		}
-		if (loop_b)
-		{
-			ft_printf("%d", loop_b->content);
-			loop_b = loop_b->next;
-		}
-		ft_printf("\n");
+		ft_printf("%d\n", *((int *)loop_a->value));
+		loop_a = loop_a->next;
 	}
 	return (0);
 }
