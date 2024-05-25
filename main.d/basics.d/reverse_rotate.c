@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rrr.c                                              :+:      :+:    :+:   */
+/*   reverse_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:17:33 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 14:55:19 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/13 17:17:18 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 21:00:40 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../../libs/ft_printf/ft_printf.h"
 
-void	rrr(t_array *stack_a, t_array *stack_b)
+void	reverse_rotate(t_array *stk, char op)
 {
-	rra(stack_a);
-	rrb(stack_b);
+	int	size;
+
+	size = array_size(stk);
+	if (size <= 1)
+		return ;
+	array_add_at(stk, item_get(stk, size - 1), 0);
+	ft_printf("rr%c\n", op);
 }

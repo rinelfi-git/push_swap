@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sa.c                                               :+:      :+:    :+:   */
+/*   swaps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:16:12 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 14:56:40 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/13 17:16:25 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 21:11:04 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include "../../libs/ft_printf/ft_printf.h"
 
-void	sa(t_array *stack)
+void	swaps(t_array *stk_a, t_array *stk_b)
 {
-	if (array_size(stack) <= 1)
-		return ;
-	array_add_at(stack, item_get(stack, 1), 0);
-	ft_printstr("sa\n");
+	swap(stk_a, 'a');
+	swap(stk_b, 'b');
 }

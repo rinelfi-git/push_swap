@@ -13,28 +13,28 @@ SOURCES	=	item/create.c \
 			item/c_char.c \
 			item/index_of.c \
 			array/add_at.c \
-			array/foreach.c \
 			array/create.c \
 			array/size.c \
 			array/destruct.c \
+			array/for_each.c \
 			array/add.c
 OBJECTS	=	$(SOURCES:.c=.o)
 
 all : $(NAME)
 
 $(NAME)	: $(OBJECTS)
-	$(AR) $(NAME) $(OBJECTS)
+	@$(AR) $(NAME) $(OBJECTS)
 
 %.o	: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	@$(CC) $(CFLAGS) -o $@ -c $<
 
 clean :
-	$(DEL) $(OBJECTS)
+	@$(DEL) $(OBJECTS)
 
 main : main.c $(NAME)
 	$(CC) $(CFLAGS) main.c -L. -larray
 
 fclean : clean
-	$(DEL) $(NAME)
+	@$(DEL) $(NAME)
 
 re	: fclean all

@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:18:49 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 19:37:31 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 21:23:54 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ static t_item	*get_lower(t_array *stack, t_item *item)
 
 	loop = stack->first;
 	lower = 0;
-	item_val = to_ps(item)->value;
+	item_val = to_ps(item)->val;
 	while (loop)
 	{
-		predicates[0] = to_ps(loop)->value > item_val;
+		predicates[0] = to_ps(loop)->val > item_val;
 		predicates[1] = !lower;
-		predicates[1] = predicates[1] || to_ps(loop)->value > to_ps(lower)->value;
+		predicates[1] = predicates[1] || to_ps(loop)->val > to_ps(lower)->val;
 		if (predicates[0] && predicates[1])
 			lower = loop;
 		loop = loop->next;
@@ -43,12 +43,12 @@ static t_item	*get_higher(t_array *stack, t_item *item)
 
 	loop = stack->first;
 	higher = 0;
-	item_val = to_ps(item)->value;
+	item_val = to_ps(item)->val;
 	while (loop)
 	{
-		predicates[0] = to_ps(loop)->value < item_val;
+		predicates[0] = to_ps(loop)->val < item_val;
 		predicates[1] = !higher;
-		predicates[1] = predicates[1] || to_ps(loop)->value < to_ps(higher)->value;
+		predicates[1] = predicates[1] || to_ps(loop)->val < to_ps(higher)->val;
 		if (predicates[0] && predicates[1])
 			higher = loop;
 		loop = loop->next;
@@ -65,7 +65,7 @@ static t_item	*get_highest(t_array *stack)
 	highest = loop;
 	while (loop)
 	{
-		if (to_ps(loop)->value > to_ps(highest)->value)
+		if (to_ps(loop)->val > to_ps(highest)->val)
 			highest = loop;
 		loop = loop->next;
 	}
@@ -81,7 +81,7 @@ static t_item	*get_lowest(t_array *stack)
 	lowest = loop;
 	while (loop)
 	{
-		if (to_ps(loop)->value < to_ps(lowest)->value)
+		if (to_ps(loop)->val < to_ps(lowest)->val)
 			lowest = loop;
 		loop = loop->next;
 	}
@@ -99,12 +99,12 @@ void	update_nearest(t_array *src, t_array *dest)
 	lowest = get_lowest(dest);
 	while (loop)
 	{
-		to_ps(loop)->nearest_lower = get_lower(dest, loop);
-		to_ps(loop)->nearest_higher = get_higher(dest, loop);
-		if (!to_ps(loop)->nearest_lower)
-			to_ps(loop)->nearest_lower = bigest;
-		if (!to_ps(loop)->nearest_higher)
-			to_ps(loop)->nearest_higher = lowest;
+		to_ps(loop)->low = get_lower(dest, loop);
+		to_ps(loop)->high = get_higher(dest, loop);
+		if (!to_ps(loop)->low)
+			to_ps(loop)->low = bigest;
+		if (!to_ps(loop)->high)
+			to_ps(loop)->high = lowest;
 		loop = loop->next;
 	}
 }

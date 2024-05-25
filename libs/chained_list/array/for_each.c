@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   foreach.c                                          :+:      :+:    :+:   */
+/*   for_each.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 16:01:10 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 16:03:48 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 20:10:44 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 20:20:52 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../array.h"
 
-void	array_foreach(t_array *array, void (*f)(int, t_item *))
+void	array_for_each(t_array *arr, void (*f)(int, t_item *))
 {
-	t_item	*item;
+	t_item	*loop;
 	int		i;
 
-	item = array->first;
+	loop = arr->first;
 	i = 0;
-	while (item)
+	while (loop)
 	{
-		f(i++, item);
-		item = item->next;
+		f(i++, loop);
+		loop = loop->next;
 	}
 }

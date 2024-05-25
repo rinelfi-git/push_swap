@@ -12,8 +12,8 @@
 
 #include "../push_swap.h"
 
-void	rr(t_array *stack_a, t_array *stack_b)
+void	rotates(t_array *stk_a, t_array *stk_b)
 {
-	ra(stack_a);
-	rb(stack_b);
+	rotate(stk_a, 'a');
+	rotate(stk_b, 'b');
 }

@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 19:30:54 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:49:42 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,23 @@
 void	print_stack(int i, t_item *item)
 {
 	printf("%d - ", i);
-	if (!to_ps(item)->nearest_higher)
+	if (!to_ps(item)->high)
 		printf("[X]");
 	else
-		printf("[%d]", to_ps(to_ps(item)->nearest_higher)->value);
-	printf(" > {%d} > ", to_ps(item)->value);
-	if (!to_ps(item)->nearest_lower)
+		printf("[%d]", to_ps(to_ps(item)->high)->val);
+	printf(" > {%d} > ", to_ps(item)->val);
+	if (!to_ps(item)->low)
 		printf("[X]\n");
 	else
-		printf("[%d]\n", to_ps(to_ps(item)->nearest_lower)->value);
+		printf("[%d]\n", to_ps(to_ps(item)->low)->val);
 }
 
 int	main(int argc, char **argv)
 {
 	t_array	*stack_a;
 	t_array	*stack_b;
-	int			ci;
+	t_item	*it;
+	int		ci;
 
 	if (argc <= 1)
 		return (1);
@@ -41,10 +42,13 @@ int	main(int argc, char **argv)
 	stack_a = array_create(0);
 	stack_b = array_create(0);
 	while (ci < argc)
-		array_add(stack_a, item_create(ps_create(ft_atoi(argv[ci++])), ps_free));
+	{
+		it = item_create(ps_create(ft_atoi(argv[ci++])), ps_free);
+		array_add(stack_a, it);
+	}
 	push_swap(stack_a, stack_b);
-	array_foreach(stack_a, print_stack);
-	array_foreach(stack_b, print_stack);
+	array_for_each(stack_a, print_stack);
+	array_for_each(stack_b, print_stack);
 	return (0);
 }
 // 5 2 7 1 6 3 9 4 8

@@ -6,20 +6,20 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 07:42:32 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:22:05 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 20:21:32 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../array.h"
 #include <stdlib.h>
 
-char	*c_char(char value)
+char	*c_char(char val)
 {
-	char	*_c_char;
+	char	*new;
 
-	_c_char = (char *) malloc(sizeof(char));
-	if (!_c_char)
+	new = (char *) malloc(sizeof(char));
+	if (!new)
 		return (0);
-	*_c_char = value;
-	return (_c_char);
+	*new = val;
+	return (new);
 }

@@ -2,17 +2,13 @@ CC = cc
 CFLAGS = -Werror -Wextra -Wall
 NAME = push_swap
 DEL = rm -rf
-OPERATIONS = main.d/basics.d/pa.c \
-			main.d/basics.d/pb.c \
-			main.d/basics.d/ra.c \
-			main.d/basics.d/rb.c \
-			main.d/basics.d/rr.c \
-			main.d/basics.d/rra.c \
-			main.d/basics.d/rrb.c \
-			main.d/basics.d/rrr.c \
-			main.d/basics.d/sa.c \
-			main.d/basics.d/sb.c \
-			main.d/basics.d/ss.c \
+OPERATIONS = main.d/basics.d/push.c \
+			main.d/basics.d/rotate.c \
+			main.d/basics.d/rotates.c \
+			main.d/basics.d/reverse_rotate.c \
+			main.d/basics.d/reverse_rotates.c \
+			main.d/basics.d/swap.c \
+			main.d/utils.d/ft_maths.c \
 			main.d/utils.d/get_cheapest.c \
 			main.d/utils.d/get_rotation.c \
 			main.d/utils.d/ps_create.c \

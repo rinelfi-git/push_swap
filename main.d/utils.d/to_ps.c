@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:40:36 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 17:44:57 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 21:23:45 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 t_ps	*to_ps(t_item *item)
 {
-	return ((t_ps *) item->value);
+	return ((t_ps *) item->val);
 }
