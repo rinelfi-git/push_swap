@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_reverse_rotate.c                            :+:      :+:    :+:   */
+/*   pa.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:17:33 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:33:23 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/13 17:16:34 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 17:54:51 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
+#include "../../libs/ft_printf/ft_printf.h"
 
-void	double_reverse_rotate(t_array *lst1, t_array *lst2)
+void	pa(t_array *stack_a, t_array *stack_b)
 {
-	reverse_rotate(lst1);
-	reverse_rotate(lst2);
+	if (!array_size(stack_b) || !stack_a)
+		return ;
+	if (!array_size(stack_a))
+		array_add(stack_a, item_remove(stack_b, 0));
+	else
+		array_add_at(stack_a, item_remove(stack_b, 0), 0);
+	ft_printstr("pa\n");
 }

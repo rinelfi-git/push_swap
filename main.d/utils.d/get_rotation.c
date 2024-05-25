@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   get_rotation.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:16:53 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:35:06 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 12:47:07 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 18:11:13 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdlib.h>
+#include "../push_swap.h"
 
-void	rotate(t_array *lst)
+int	get_rotation(t_array *list, t_item *item)
 {
-	if (array_size(lst) <= 1)
-		return ;
-	array_add(lst, item_remove(lst, 0));
+	int	index;
+	int	size;
+
+	index = item_index_of(list, item);
+	size = array_size(list);
+	if (index < size / 2)
+		return (index);
+	return (index - size);
 }

@@ -11,7 +11,9 @@ SOURCES	=	item/create.c \
 			item/c_int.c \
 			item/c_long.c \
 			item/c_char.c \
+			item/index_of.c \
 			array/add_at.c \
+			array/foreach.c \
 			array/create.c \
 			array/size.c \
 			array/destruct.c \

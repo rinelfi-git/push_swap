@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:37:28 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:46:53 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,28 @@
 #include "main.d/push_swap.h"
 #include <stdlib.h>
 
+void	print_stack(int i, t_item *item)
+{
+	t_item	*nearest;
+	t_ps	*ps;
+	t_ps	*lower;
+
+	ps = (t_ps *) item->value;
+	nearest = ps->nearest_lower;
+	lower = 0;
+	if (nearest)
+		lower = (t_ps *) nearest->value;
+	printf("[%d] %d > ", i, ps->value);
+	if (!lower)
+		printf("'X'\n");
+	else
+		printf("%d\n", lower->value);
+}
+
 int	main(int argc, char **argv)
 {
 	t_array	*stack_a;
 	t_array	*stack_b;
-	t_item	*loop_a;
 	int			ci;
 
 	if (argc <= 1)
@@ -28,15 +45,10 @@ int	main(int argc, char **argv)
 	stack_a = array_create(0);
 	stack_b = array_create(0);
 	while (ci < argc)
-		array_add(stack_a, item_create(c_int(ft_atoi(argv[ci++])), free));
+		array_add(stack_a, item_create(ps_create(ft_atoi(argv[ci++])), ps_free));
 	push_swap(stack_a, stack_b);
-
-	loop_a = stack_a->first;
-	ft_printf("SORTED\n");
-	while (loop_a)
-	{
-		ft_printf("%d\n", *((int *)loop_a->value));
-		loop_a = loop_a->next;
-	}
+	array_foreach(stack_a, print_stack);
+	array_foreach(stack_b, print_stack);
 	return (0);
 }
+// 5 2 7 1 6 3 9 4 8

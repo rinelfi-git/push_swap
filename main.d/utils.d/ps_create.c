@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   ps_create.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:16:12 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:35:22 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 12:04:41 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 14:54:36 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
+#include <stdlib.h>
 
-void	swap(t_array *lst)
+t_ps	*ps_create(int value)
 {
-	if (array_size(lst) <= 1)
-		return ;
-	array_add_at(lst, item_get(lst, 1), 0);
+	t_ps	*_ps_create;
+
+	_ps_create = (t_ps *) malloc(sizeof(t_ps));
+	if (!_ps_create)
+		return (0);
+	_ps_create->nearest_lower = 0;
+	_ps_create->rotation = 0;
+	_ps_create->value = value;
+	return (_ps_create);
 }

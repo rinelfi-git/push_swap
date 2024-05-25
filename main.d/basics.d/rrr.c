@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_rotate.c                                    :+:      :+:    :+:   */
+/*   rrr.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:17:06 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:33:33 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/13 17:17:33 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 14:55:19 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	double_rotate(t_array *lst1, t_array *lst2)
+void	rrr(t_array *stack_a, t_array *stack_b)
 {
-	rotate(lst1);
-	rotate(lst2);
+	rra(stack_a);
+	rrb(stack_b);
 }

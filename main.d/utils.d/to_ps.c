@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   double_swap.c                                      :+:      :+:    :+:   */
+/*   to_ps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:16:25 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:33:37 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 17:40:36 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 17:44:57 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-void	double_swap(t_array *lst1, t_array *lst2)
+t_ps	*to_ps(t_item *item)
 {
-	swap(lst1);
-	swap(lst2);
+	return ((t_ps *) item->value);
 }

@@ -2,17 +2,27 @@ CC = cc
 CFLAGS = -Werror -Wextra -Wall
 NAME = push_swap
 DEL = rm -rf
-MAIN_D = main.d
-OPERATIONS	=	$(MAIN_D)/push.c \
-				$(MAIN_D)/reverse_rotate.c \
-				$(MAIN_D)/sort2.c \
-				$(MAIN_D)/sort3.c \
-				$(MAIN_D)/rotate.c \
-				$(MAIN_D)/swap.c \
-				$(MAIN_D)/double_reverse_rotate.c \
-				$(MAIN_D)/double_rotate.c \
-				$(MAIN_D)/push_swap.c \
-				$(MAIN_D)/double_swap.c
+OPERATIONS = main.d/basics.d/pa.c \
+			main.d/basics.d/pb.c \
+			main.d/basics.d/ra.c \
+			main.d/basics.d/rb.c \
+			main.d/basics.d/rr.c \
+			main.d/basics.d/rra.c \
+			main.d/basics.d/rrb.c \
+			main.d/basics.d/rrr.c \
+			main.d/basics.d/sa.c \
+			main.d/basics.d/sb.c \
+			main.d/basics.d/ss.c \
+			main.d/utils.d/get_cheapest.c \
+			main.d/utils.d/get_rotation.c \
+			main.d/utils.d/ps_create.c \
+			main.d/utils.d/ps_free.c \
+			main.d/utils.d/push_a_to_b.c \
+			main.d/utils.d/push_swap.c \
+			main.d/utils.d/sort2.c \
+			main.d/utils.d/sort3.c \
+			main.d/utils.d/to_ps.c \
+			main.d/utils.d/update_nearest_lower.c
 OPERATIONS_O = $(OPERATIONS:.c=.o)
 
 PRINTF_D = ./libs/ft_printf

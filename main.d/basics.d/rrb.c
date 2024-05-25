@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   rrb.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 17:16:34 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 11:35:06 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/13 17:17:18 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/25 14:56:40 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-#include <stdlib.h>
+#include "../push_swap.h"
+#include "../../libs/ft_printf/ft_printf.h"
 
-void	push(t_array *dest, t_array *src)
+void	rrb(t_array *stack_b)
 {
-	if (!array_size(src) || !dest)
+	int	size;
+
+	size = array_size(stack_b);
+	if (size <= 1)
 		return ;
-	array_add_at(dest, item_remove(src, 0), 0);
+	array_add_at(stack_b, item_get(stack_b, size - 1), 0);
+	ft_printstr("rrb\n");
 }
