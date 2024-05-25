@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:04:41 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 14:54:36 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:55:25 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_ps	*ps_create(int value)
 	if (!_ps_create)
 		return (0);
 	_ps_create->nearest_lower = 0;
+	_ps_create->nearest_higher = 0;
 	_ps_create->rotation = 0;
 	_ps_create->value = value;
 	return (_ps_create);

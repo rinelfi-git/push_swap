@@ -6,16 +6,31 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:30:14 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 18:47:36 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:30:02 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+static int	ft_abs(int nbr)
+{
+	if (nbr < 0)
+		return (-nbr);
+	return (nbr);
+}
+
 static void	show_rotations(int i, t_item *item)
 {
-	printf("%d - [%d] NEED %d ROTATIONS\n", i, to_ps(item)->value, to_ps(item)->rotation);
-
+	printf("%d - ", i);
+	if (!to_ps(item)->nearest_higher)
+		printf("[X]");
+	else
+		printf("[%d]", to_ps(to_ps(item)->nearest_higher)->value);
+	printf(" > {%d} > ", to_ps(item)->value);
+	if (!to_ps(item)->nearest_lower)
+		printf("[X]\n");
+	else
+		printf("[%d]\n", to_ps(to_ps(item)->nearest_lower)->value);
 }
 
 static void	rotate_a(t_array *stack, t_item *item)
@@ -69,12 +84,14 @@ static void update_needed_rotation(t_array *list)
 void	push_a_to_b(t_array *stack_a, t_array *stack_b)
 {
 	t_item	*top_a;
+	int		low_rotation;
+	int		high_rotation;
 	
 	if (array_size(stack_b) <= 1)
 		pb(stack_b, stack_a);
 	else
 	{
-		update_nearest_lower(stack_a, stack_b);
+		update_nearest(stack_a, stack_b);
 		update_needed_rotation(stack_a);
 		update_needed_rotation(stack_b);
 		array_foreach(stack_a, show_rotations);
@@ -82,7 +99,12 @@ void	push_a_to_b(t_array *stack_a, t_array *stack_b)
 		top_a = get_cheapest(stack_a);
 		printf("CHEAPEST NUMBER IS %d\n", to_ps(top_a)->value);
 		rotate_a(stack_a, top_a);
-		rotate_b(stack_b, to_ps(top_a)->nearest_lower);
+		low_rotation = to_ps(to_ps(top_a)->nearest_lower)->rotation;
+		high_rotation = to_ps(to_ps(top_a)->nearest_higher)->rotation;
+		if (ft_abs(low_rotation) < ft_abs(high_rotation))
+			rotate_b(stack_b, to_ps(top_a)->nearest_lower);
+		else
+			rotate_b(stack_b, to_ps(top_a)->nearest_higher);
 		pb(stack_b, stack_a);
 	}
 }

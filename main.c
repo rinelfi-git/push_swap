@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 18:46:53 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:30:54 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,16 @@
 
 void	print_stack(int i, t_item *item)
 {
-	t_item	*nearest;
-	t_ps	*ps;
-	t_ps	*lower;
-
-	ps = (t_ps *) item->value;
-	nearest = ps->nearest_lower;
-	lower = 0;
-	if (nearest)
-		lower = (t_ps *) nearest->value;
-	printf("[%d] %d > ", i, ps->value);
-	if (!lower)
-		printf("'X'\n");
+	printf("%d - ", i);
+	if (!to_ps(item)->nearest_higher)
+		printf("[X]");
 	else
-		printf("%d\n", lower->value);
+		printf("[%d]", to_ps(to_ps(item)->nearest_higher)->value);
+	printf(" > {%d} > ", to_ps(item)->value);
+	if (!to_ps(item)->nearest_lower)
+		printf("[X]\n");
+	else
+		printf("[%d]\n", to_ps(to_ps(item)->nearest_lower)->value);
 }
 
 int	main(int argc, char **argv)

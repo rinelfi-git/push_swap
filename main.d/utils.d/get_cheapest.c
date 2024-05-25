@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 14:48:04 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 18:47:42 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 19:25:22 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,20 @@ static int	ft_abs(int nbr)
 
 static int	total_move(t_item *item)
 {
-	int		move;
-	t_ps	*nearest;
+	int		from_lower_move;
+	int		from_higher_move;
+	t_ps	*nearest_low;
+	t_ps	*nearest_high;
 
-	move = 0;
-	nearest = to_ps(to_ps(item)->nearest_lower);
-	move += ft_abs(to_ps(item)->rotation);
-	move += ft_abs(nearest->rotation);
-	return (move);
+	from_lower_move = ft_abs(to_ps(item)->rotation);
+	from_higher_move = ft_abs(to_ps(item)->rotation);
+	nearest_low = to_ps(to_ps(item)->nearest_lower);
+	nearest_high = to_ps(to_ps(item)->nearest_higher);
+	from_lower_move += ft_abs(nearest_low->rotation);
+	from_higher_move += ft_abs(nearest_high->rotation);
+	if (from_higher_move < from_lower_move)
+		return (from_higher_move);
+	return (from_lower_move);
 }
 
 t_item	*get_cheapest(t_array *stack)

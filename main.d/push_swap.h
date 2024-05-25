@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:17:28 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 18:47:31 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 18:58:30 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_ps
 	int		value;
 	int		rotation;
 	t_item	*nearest_lower;
+	t_item	*nearest_higher;
 } t_ps;
 void	sa(t_array *stack);
 void	sb(t_array *stack);
@@ -38,7 +39,7 @@ int		push_swap(t_array *stack_a, t_array *stack_b);
 void	sort3(t_array *stack);
 void	sort2(t_array *stack);
 int		get_rotation(t_array *list, t_item *item);
-void	update_nearest_lower(t_array *src, t_array *dest);
+void	update_nearest(t_array *src, t_array *dest);
 t_item	*get_cheapest(t_array *stack);
 t_ps	*to_ps(t_item *item);
 void	push_a_to_b(t_array *stack_a, t_array *stack_b);

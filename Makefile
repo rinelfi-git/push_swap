@@ -22,7 +22,7 @@ OPERATIONS = main.d/basics.d/pa.c \
 			main.d/utils.d/sort2.c \
 			main.d/utils.d/sort3.c \
 			main.d/utils.d/to_ps.c \
-			main.d/utils.d/update_nearest_lower.c
+			main.d/utils.d/update_nearest.c
 OPERATIONS_O = $(OPERATIONS:.c=.o)
 
 PRINTF_D = ./libs/ft_printf
