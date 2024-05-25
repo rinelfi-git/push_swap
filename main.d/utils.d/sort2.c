@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 10:36:47 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 21:14:15 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:20:09 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,5 @@ void	sort2(t_array *stk)
 	its[0] = *((int *)item_get(stk, 0)->val);
 	its[1] = *((int *)item_get(stk, 1)->val);
 	if (its[1] < its[0])
-	{
 		swap(stk, 'a');
-	}
 }

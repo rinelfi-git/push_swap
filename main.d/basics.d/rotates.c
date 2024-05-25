@@ -11,9 +11,11 @@
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include "../../libs/ft_printf/ft_printf.h"
 
 void	rotates(t_array *stk_a, t_array *stk_b)
 {
-	rotate(stk_a, 'a');
-	rotate(stk_b, 'b');
+	rotate(stk_a, 0);
+	rotate(stk_b, 0);
+	ft_printstr("rr\n");
 }

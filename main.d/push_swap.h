@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:17:28 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 21:18:29 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:33:29 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	swap(t_array *stk, char op);
 void	swaps(t_array *stk_a, t_array *stk_b);
 void	push(t_array *stk_dest, t_array *stk_src, char op);
 void	rotate(t_array *stk, char op);
-void	reverse_rotates(t_array *stk_a, t_array *stk_b);
+void	rotates(t_array *stk_a, t_array *stk_b);
 void	reverse_rotate(t_array *stk, char op);
 void	reverse_rotates(t_array *stk_a, t_array *stk_b);
 t_ps	*ps_create(int value);

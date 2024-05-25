@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"*.php": "php",
-		"type_traits": "c"
+		"type_traits": "c",
+		"push_swap.h": "c"
 	}
 }

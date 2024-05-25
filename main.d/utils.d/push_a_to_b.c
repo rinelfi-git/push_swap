@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:30:14 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 21:23:25 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:55:46 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,47 @@ static void	show_rotations(int i, t_item *item)
 		printf("[%d]\n", to_ps(to_ps(item)->low)->val);
 }
 
-static void	do_rotation(t_array *stack, t_item *item, char op)
+static void	do_rotate_only(t_array *stk, t_item *it, char op)
 {
-	while (to_ps(item)->rt != 0)
+	while (to_ps(it)->rt < 0)
 	{
-		if (to_ps(item)->rt < 0)
-		{
-			reverse_rotate(stack, op);
-			to_ps(item)->rt++;
-		}
-		else
-		{
-			rotate(stack, op);
-			to_ps(item)->rt--;
-		}
+		reverse_rotate(stk, op);
+		to_ps(it)->rt++;
+	}
+	while (to_ps(it)->rt > 0)
+	{
+		rotate(stk, op);
+		to_ps(it)->rt--;
 	}
 }
 
-static void	update_needed_rotation(t_array *list)
+static void	do_rotation(t_array *s1, t_item *i1, t_array *s2, t_item *i2)
 {
-	t_item	*item;
-	t_ps	*cast_ps;
-
-	item = list->first;
-	while (item)
+	while (to_ps(i1)->rt < 0 && to_ps(i2)->rt < 0)
 	{
-		cast_ps = (t_ps *) item->val;
-		cast_ps->rt = get_rotation(list, item);
-		item = item->next;
+		reverse_rotates(s1, s2);
+		to_ps(i1)->rt++;
+		to_ps(i2)->rt++;
+	}
+	while (to_ps(i1)->rt > 0 && to_ps(i2)->rt > 0)
+	{
+		rotates(s1, s2);
+		to_ps(i1)->rt--;
+		to_ps(i2)->rt--;
+	}
+	do_rotate_only(s1, i1, 'a');
+	do_rotate_only(s2, i2, 'b');
+}
+
+static void	update_needed_rotation(t_array *stk)
+{
+	t_item	*loop;
+
+	loop = stk->first;
+	while (loop)
+	{
+		to_ps(loop)->rt = get_rotation(stk, loop);
+		loop = loop->next;
 	}
 }
 
@@ -71,16 +84,11 @@ void	push_a_to_b(t_array *stack_a, t_array *stack_b)
 		update_needed_rotation(stack_a);
 		update_needed_rotation(stack_b);
 		array_for_each(stack_a, show_rotations);
+		printf("-------------------\n");
 		array_for_each(stack_b, show_rotations);
 		top_a = get_cheapest(stack_a);
-		printf("CHEAPEST NUMBER IS %d\n", to_ps(top_a)->val);
-		do_rotation(stack_a, top_a, 'a');
-		low_rotation = to_ps(to_ps(top_a)->low)->rt;
-		high_rotation = to_ps(to_ps(top_a)->high)->rt;
-		if (ft_abs(low_rotation) < ft_abs(high_rotation))
-			do_rotation(stack_b, to_ps(top_a)->low, 'b');
-		else
-			do_rotation(stack_b, to_ps(top_a)->high, 'b');
+		// printf("CHEAPEST NUMBER IS %d\n", to_ps(top_a)->val);
+		do_rotation(stack_a, top_a, stack_b, to_ps(top_a)->low);
 		push(stack_b, stack_a, 'b');
 	}
 }

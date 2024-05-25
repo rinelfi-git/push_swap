@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 20:49:42 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:55:37 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char **argv)
 	}
 	push_swap(stack_a, stack_b);
 	array_for_each(stack_a, print_stack);
+	printf("-------------------\n");
 	array_for_each(stack_b, print_stack);
 	return (0);
 }

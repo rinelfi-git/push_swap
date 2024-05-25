@@ -39,7 +39,7 @@ ARRAY_LIB = $(ARRAY_D)/libarray.a
 all	: $(NAME)
 
 $(NAME): main.c $(OPERATIONS_O) $(PRINTF_LIB) $(FT_LIB) $(ARRAY_LIB)
-	$(CC) $(CFLAGS) main.c $(OPERATIONS_O) \
+	$(CC) main.c $(OPERATIONS_O) \
 	-L$(FT_D) -l$(FT_A) \
 	-L$(PRINTF_D) -l$(PRINTF_A) \
 	-L$(ARRAY_D) -l$(ARRAY_A) \
@@ -55,7 +55,7 @@ $(ARRAY_LIB) : $(ARRAY_H)
 	make -C $(ARRAY_D)
 
 %.o					: %.c
-	$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) -o $@ -c $<
 
 clean :
 	$(DEL) $(OPERATIONS_O)

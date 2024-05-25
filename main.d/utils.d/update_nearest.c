@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:18:49 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 21:23:54 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:04:22 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,22 @@ static t_item	*get_lower(t_array *stack, t_item *item)
 {
 	t_item	*loop;
 	t_item	*lower;
-	int		item_val;
-	int		predicates[2];
+	int		it_val;
+	int		bools[2];
 
 	loop = stack->first;
 	lower = 0;
-	item_val = to_ps(item)->val;
+	it_val = to_ps(item)->val;
 	while (loop)
 	{
-		predicates[0] = to_ps(loop)->val > item_val;
-		predicates[1] = !lower;
-		predicates[1] = predicates[1] || to_ps(loop)->val > to_ps(lower)->val;
-		if (predicates[0] && predicates[1])
+		bools[0] = to_ps(loop)->val < it_val;
+		bools[1] = !lower || to_ps(loop)->val > to_ps(lower)->val;
+		// printf("%d < %d", to_ps(loop)->val, it_val);
+		// if (!lower)
+		// 	printf(" => (%d)\n", bools[0]);
+		// else
+		// 	printf(" && %d > %d => (%d, %d)\n", to_ps(loop)->val, to_ps(lower)->val, bools[0], bools[1]);
+		if (bools[0] && bools[1])
 			lower = loop;
 		loop = loop->next;
 	}
@@ -96,15 +100,11 @@ void	update_nearest(t_array *src, t_array *dest)
 
 	loop = src->first;
 	bigest = get_highest(dest);
-	lowest = get_lowest(dest);
 	while (loop)
 	{
 		to_ps(loop)->low = get_lower(dest, loop);
-		to_ps(loop)->high = get_higher(dest, loop);
 		if (!to_ps(loop)->low)
 			to_ps(loop)->low = bigest;
-		if (!to_ps(loop)->high)
-			to_ps(loop)->high = lowest;
 		loop = loop->next;
 	}
 }

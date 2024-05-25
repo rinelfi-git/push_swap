@@ -6,26 +6,51 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 14:48:04 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 21:19:32 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 22:52:54 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
+static void	count_only(int *move, int *rt)
+{
+	while (*rt < 0)
+	{
+		(*move)++;
+		(*rt)++;
+	}
+	while (*rt > 0)
+	{
+		(*move)++;
+		(*rt)--;
+	}
+}
+
 static int	total_move(t_item *item)
 {
-	int		from_lower_move;
-	int		from_higher_move;
-	t_ps	*nearest_low;
-	t_ps	*nearest_high;
+	int		move;
+	int		rts[2];
+	t_ps	*near_low;
 
-	from_lower_move = ft_abs(to_ps(item)->rt);
-	from_higher_move = ft_abs(to_ps(item)->rt);
-	nearest_low = to_ps(to_ps(item)->low);
-	nearest_high = to_ps(to_ps(item)->high);
-	from_lower_move += ft_abs(nearest_low->rt);
-	from_higher_move += ft_abs(nearest_high->rt);
-	return (ft_min(from_higher_move, from_lower_move));
+	move = 0;
+	near_low = to_ps(to_ps(item)->low);
+	rts[0] = to_ps(item)->rt;
+	rts[1] = near_low->rt;
+	while (rts[0] < 0 && rts[1] < 0)
+	{
+		move++;
+		rts[0]++;
+		rts[1]++;
+	}
+	while (rts[0] > 0 && rts[1] > 0)
+	{
+		move++;
+		rts[0]--;
+		rts[1]--;
+	}
+	count_only(&move, &rts[0]);
+	count_only(&move, &rts[1]);
+	return (move);
 }
 
 t_item	*get_cheapest(t_array *stack)
