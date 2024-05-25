@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   last_rotate.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/26 00:21:30 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/26 00:00:57 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/26 00:20:47 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libs/libft/libft.h"
-#include "libs/ft_printf/ft_printf.h"
-#include "main.d/push_swap.h"
-#include <stdlib.h>
+#include "../push_swap.h"
 
-void	show_rotations(int i, t_item *item)
+static void	show_rotations(int i, t_item *item)
 {
 	printf("%d - ", i);
 	if (!to_ps(item)->high)
@@ -29,28 +26,37 @@ void	show_rotations(int i, t_item *item)
 		printf("[%d]\n", to_ps(to_ps(item)->low)->val);
 }
 
-int	main(int argc, char **argv)
+static void	do_rotate_only(t_array *stk, t_item *it, char op)
 {
-	t_array	*stk_a;
-	t_array	*stk_b;
-	t_item	*it;
-	int		ci;
-
-	if (argc <= 1)
-		return (1);
-	ci = 1;
-	stk_a = array_create(0);
-	stk_b = array_create(0);
-	while (ci < argc)
+	while (to_ps(it)->rt < 0)
 	{
-		it = item_create(ps_create(ft_atoi(argv[ci++])), ps_free);
-		array_add(stk_a, it);
+		reverse_rotate(stk, op);
+		to_ps(it)->rt++;
 	}
-	push_swap(stk_a, stk_b);
-	// array_for_each(stk_a, show_rotations);
-	// printf("-------------------\n");
-	// array_for_each(stk_b, show_rotations);
-	// printf("xxxxxxxxxxxxxxxxxxx\n");
-	return (0);
+	while (to_ps(it)->rt > 0)
+	{
+		rotate(stk, op);
+		to_ps(it)->rt--;
+	}
 }
-// 5 2 7 1 6 3 9 4 8
+
+static void	update_needed_rotation(t_array *stk)
+{
+	t_item	*loop;
+
+	loop = stk->first;
+	while (loop)
+	{
+		to_ps(loop)->rt = get_rotation(stk, loop);
+		loop = loop->next;
+	}
+}
+
+void	last_rotate(t_array *stk)
+{
+	update_nearest(stk, stk);
+	update_needed_rotation(stk);
+	do_rotate_only(stk, stk->last, 'a');
+	// array_for_each(stk, show_rotations);
+	// printf("xxxxxxxxxxxxxxxxxxx\n");
+}

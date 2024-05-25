@@ -11,9 +11,11 @@ OPERATIONS = main.d/basics.d/push.c \
 			main.d/utils.d/ft_maths.c \
 			main.d/utils.d/get_cheapest.c \
 			main.d/utils.d/get_rotation.c \
+			main.d/utils.d/last_rotate.c \
 			main.d/utils.d/ps_create.c \
 			main.d/utils.d/ps_free.c \
 			main.d/utils.d/push_a_to_b.c \
+			main.d/utils.d/push_b_to_a.c \
 			main.d/utils.d/push_swap.c \
 			main.d/utils.d/sort2.c \
 			main.d/utils.d/sort3.c \

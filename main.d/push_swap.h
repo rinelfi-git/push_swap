@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:17:28 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 22:33:29 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:07:38 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ void	update_nearest(t_array *src, t_array *dest);
 t_item	*get_cheapest(t_array *stk);
 t_ps	*to_ps(t_item *item);
 void	push_a_to_b(t_array *stk_a, t_array *stk_b);
+void	push_b_to_a(t_array *stk_b, t_array *stk_a);
+void	last_rotate(t_array *stk);
 int		ft_abs(int nbr);
 int		ft_min(int nbr1, int nbr2);
 #endif

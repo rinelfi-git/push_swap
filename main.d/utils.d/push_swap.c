@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/18 15:26:44 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 22:55:04 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/26 00:21:18 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,33 @@ static void	sort_3numbers(t_array *a)
 		sort2(a);
 }
 
-// static void	push_b_to_a(t_array *b, t_array *a)
-// {
-	
-// }
-
-// static void	push_b_to_a(t_array *b, t_array *a)
-// {
-	
-// }
-
-int	push_swap(t_array *stack_a, t_array *stack_b)
+static t_item	*get_lowest(t_array *stack)
 {
-	int	i;
+	t_item	*lowest;
+	t_item	*loop;
 
-	i = 0;
-	while (array_size(stack_a) > 3)
-		push_a_to_b(stack_a, stack_b);
-	sort_3numbers(stack_a);
-	// while (array_size(stack_b) > 0)
-	// 	push_b_to_a(stack_b, stack_b);
+	loop = stack->first;
+	lowest = loop;
+	while (loop)
+	{
+		if (to_ps(loop)->val < to_ps(lowest)->val)
+			lowest = loop;
+		loop = loop->next;
+	}
+	return (lowest);
+}
+
+int	push_swap(t_array *stk_a, t_array *stk_b)
+{
+	t_item	*lowest;
+
+	lowest = get_lowest(stk_a);
+	while (array_size(stk_a) > 3)
+		push_a_to_b(stk_a, stk_b);
+	sort_3numbers(stk_a);
+	while (array_size(stk_b) > 0)
+		push_b_to_a(stk_b, stk_a);
+	while (stk_a->first != lowest)
+		last_rotate(stk_a);
 	return (0);
 }

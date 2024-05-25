@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_a_to_b.c                                      :+:      :+:    :+:   */
+/*   push_b_to_a.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:30:14 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 23:56:59 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 23:02:57 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/26 00:20:52 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,26 +70,14 @@ static void	update_needed_rotation(t_array *stk)
 	}
 }
 
-void	push_a_to_b(t_array *stack_a, t_array *stack_b)
+void	push_b_to_a(t_array *stk_b, t_array *stk_a)
 {
-	t_item	*top_a;
-	int		low_rotation;
-	int		high_rotation;
-
-	if (array_size(stack_b) <= 1)
-		push(stack_b, stack_a, 'b');
-	else
-	{
-		update_nearest(stack_a, stack_b);
-		update_needed_rotation(stack_a);
-		update_needed_rotation(stack_b);
-		top_a = get_cheapest(stack_a);
-		// printf("CHEAPEST NUMBER IS %d\n", to_ps(top_a)->val);
-		do_rotation(stack_a, top_a, stack_b, to_ps(top_a)->low);
-		push(stack_b, stack_a, 'b');
-		// array_for_each(stack_a, show_rotations);
-		// printf("-------------------\n");
-		// array_for_each(stack_b, show_rotations);
-		// printf("xxxxxxxxxxxxxxxxxxx\n");
-	}
+	update_nearest(stk_b, stk_a);
+	update_needed_rotation(stk_a);
+	do_rotate_only(stk_a, to_ps(stk_b->first)->high, 'a');
+	push(stk_a, stk_b, 'a');
+	// array_for_each(stk_a, show_rotations);
+	// printf("-------------------\n");
+	// array_for_each(stk_b, show_rotations);
+	// printf("xxxxxxxxxxxxxxxxxxx\n");
 }
