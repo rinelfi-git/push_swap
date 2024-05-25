@@ -6,13 +6,13 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 17:17:06 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 10:32:35 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/25 11:33:33 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	double_rotate(t_list *lst1, t_list *lst2)
+void	double_rotate(t_array *lst1, t_array *lst2)
 {
 	rotate(lst1);
 	rotate(lst2);
