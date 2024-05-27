@@ -8,6 +8,8 @@ OPERATIONS = main.d/basics.d/push.c \
 			main.d/basics.d/reverse_rotate.c \
 			main.d/basics.d/reverse_rotates.c \
 			main.d/basics.d/swap.c \
+			main.d/utils.d/count_words.c \
+			main.d/utils.d/ft_isnumeric.c \
 			main.d/utils.d/ft_maths.c \
 			main.d/utils.d/get_cheapest.c \
 			main.d/utils.d/get_rotation.c \

@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:17:28 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/26 00:07:38 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/27 13:42:09 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,6 @@ void	push_b_to_a(t_array *stk_b, t_array *stk_a);
 void	last_rotate(t_array *stk);
 int		ft_abs(int nbr);
 int		ft_min(int nbr1, int nbr2);
+int		count_words(const char *s, char c);
+int		ft_isnumeric(char *str);
 #endif

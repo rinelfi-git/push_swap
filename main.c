@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/26 00:21:30 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:32:04 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,43 +14,95 @@
 #include "libs/ft_printf/ft_printf.h"
 #include "main.d/push_swap.h"
 #include <stdlib.h>
+#include <limits.h>
 
-void	show_rotations(int i, t_item *item)
+static char	**copy_args(char **argv, int size)
 {
-	printf("%d - ", i);
-	if (!to_ps(item)->high)
-		printf("[X]");
+	char	**arr;
+	int		i;
+
+	arr = (char **) malloc(sizeof(char *) * size);
+	if (!arr)
+		return (0);
+	i = 0;
+	while (i < size)
+	{
+		arr[i] = ft_strdup(argv[i]);
+		i++;
+	}
+	return (arr);
+}
+
+static char	**get_args(char **argv, int argc, int *count)
+{
+	char	**arg;
+
+	if (argc == 2)
+	{
+		arg = ft_split(argv[1], ' ');
+		*count = count_words(argv[1], ' ');
+	}
 	else
-		printf("[%d]", to_ps(to_ps(item)->high)->val);
-	printf(" > {%d} > ", to_ps(item)->val);
-	if (!to_ps(item)->low)
-		printf("[X]\n");
-	else
-		printf("[%d]\n", to_ps(to_ps(item)->low)->val);
+	{
+		arg = copy_args(argv + 1, argc);
+		*count = argc - 1;
+	}
+	return (arg);
+}
+
+static int	is_args_correct(char **arr, int size)
+{
+	int	i;
+	int	j;
+	int	should_stop;
+
+	i = 0;
+	while (i < size)
+	{
+		should_stop = !ft_isnumeric(arr[i]);
+		should_stop = should_stop || ft_atoi(arr[i]) >= INT_MAX;
+		should_stop = should_stop || ft_atoi(arr[i]) <= INT_MIN;
+		if (should_stop)
+			return (0);
+		i++;
+	}
+	i = -1;
+	j = -1;
+	while (++i < size)
+	{
+		j = 0;
+		while (++j < size)
+			if (i != j && ft_atoi(arr[i]) == ft_atoi(arr[j]))
+				return (0);
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
 {
 	t_array	*stk_a;
 	t_array	*stk_b;
-	t_item	*it;
 	int		ci;
+	int		count;
+	char	**args;
 
 	if (argc <= 1)
 		return (1);
-	ci = 1;
+	args = get_args(argv, argc, &count);
+	if (!is_args_correct(args, count))
+	{
+		ft_printstr("Error\n");
+		return (1);
+	}
+	ci = 0;
 	stk_a = array_create(0);
 	stk_b = array_create(0);
-	while (ci < argc)
+	while (ci < count)
 	{
-		it = item_create(ps_create(ft_atoi(argv[ci++])), ps_free);
-		array_add(stk_a, it);
+		array_add(stk_a, item_create(ps_create(ft_atoi(args[ci])), ps_free));
+		free(args[ci]);
+		ci++;
 	}
-	push_swap(stk_a, stk_b);
-	// array_for_each(stk_a, show_rotations);
-	// printf("-------------------\n");
-	// array_for_each(stk_b, show_rotations);
-	// printf("xxxxxxxxxxxxxxxxxxx\n");
-	return (0);
+	free(args);
+	return (push_swap(stk_a, stk_b));
 }
-// 5 2 7 1 6 3 9 4 8
