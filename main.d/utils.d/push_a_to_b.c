@@ -6,25 +6,11 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 12:30:14 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 23:56:59 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:38:52 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	show_rotations(int i, t_item *item)
-{
-	printf("%d - ", i);
-	if (!to_ps(item)->high)
-		printf("[X]");
-	else
-		printf("[%d]", to_ps(to_ps(item)->high)->val);
-	printf(" > {%d} > ", to_ps(item)->val);
-	if (!to_ps(item)->low)
-		printf("[X]\n");
-	else
-		printf("[%d]\n", to_ps(to_ps(item)->low)->val);
-}
 
 static void	do_rotate_only(t_array *stk, t_item *it, char op)
 {
@@ -84,12 +70,7 @@ void	push_a_to_b(t_array *stack_a, t_array *stack_b)
 		update_needed_rotation(stack_a);
 		update_needed_rotation(stack_b);
 		top_a = get_cheapest(stack_a);
-		// printf("CHEAPEST NUMBER IS %d\n", to_ps(top_a)->val);
 		do_rotation(stack_a, top_a, stack_b, to_ps(top_a)->low);
 		push(stack_b, stack_a, 'b');
-		// array_for_each(stack_a, show_rotations);
-		// printf("-------------------\n");
-		// array_for_each(stack_b, show_rotations);
-		// printf("xxxxxxxxxxxxxxxxxxx\n");
 	}
 }

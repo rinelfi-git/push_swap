@@ -6,25 +6,11 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 23:02:57 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/26 00:20:52 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:39:02 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static void	show_rotations(int i, t_item *item)
-{
-	printf("%d - ", i);
-	if (!to_ps(item)->high)
-		printf("[X]");
-	else
-		printf("[%d]", to_ps(to_ps(item)->high)->val);
-	printf(" > {%d} > ", to_ps(item)->val);
-	if (!to_ps(item)->low)
-		printf("[X]\n");
-	else
-		printf("[%d]\n", to_ps(to_ps(item)->low)->val);
-}
 
 static void	do_rotate_only(t_array *stk, t_item *it, char op)
 {
@@ -76,8 +62,4 @@ void	push_b_to_a(t_array *stk_b, t_array *stk_a)
 	update_needed_rotation(stk_a);
 	do_rotate_only(stk_a, to_ps(stk_b->first)->high, 'a');
 	push(stk_a, stk_b, 'a');
-	// array_for_each(stk_a, show_rotations);
-	// printf("-------------------\n");
-	// array_for_each(stk_b, show_rotations);
-	// printf("xxxxxxxxxxxxxxxxxxx\n");
 }

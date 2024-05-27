@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/25 17:18:49 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 23:30:34 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/27 14:39:09 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,6 @@ static t_item	*get_lower(t_array *stack, t_item *item)
 	{
 		bools[0] = to_ps(loop)->val < it_val;
 		bools[1] = !lower || to_ps(loop)->val > to_ps(lower)->val;
-		// printf("%d < %d", to_ps(loop)->val, it_val);
-		// if (!lower)
-		// 	printf(" => (%d)\n", bools[0]);
-		// else
-		// 	printf(" && %d > %d => (%d, %d)\n", to_ps(loop)->val, to_ps(lower)->val, bools[0], bools[1]);
 		if (bools[0] && bools[1])
 			lower = loop;
 		loop = loop->next;
