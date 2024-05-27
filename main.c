@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/27 14:32:04 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:16:58 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,16 @@ static char	**copy_args(char **argv, int size)
 	arr = (char **) malloc(sizeof(char *) * size);
 	if (!arr)
 		return (0);
-	i = 0;
-	while (i < size)
-	{
+	i = -1;
+	while (++i < size && argv[i])
 		arr[i] = ft_strdup(argv[i]);
-		i++;
-	}
 	return (arr);
 }
 
 static char	**get_args(char **argv, int argc, int *count)
 {
 	char	**arg;
+	int		i;
 
 	if (argc == 2)
 	{
@@ -47,7 +45,21 @@ static char	**get_args(char **argv, int argc, int *count)
 		arg = copy_args(argv + 1, argc);
 		*count = argc - 1;
 	}
+	i = -1;
+	while (++i < *count)
+		arg[i] = ft_strtrim(arg[i], " ");
 	return (arg);
+}
+
+static int	free_memory(char **arr, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+		free(arr[i++]);
+	free(arr);
+	return (0);
 }
 
 static int	is_args_correct(char **arr, int size)
@@ -92,17 +104,13 @@ int	main(int argc, char **argv)
 	if (!is_args_correct(args, count))
 	{
 		ft_printstr("Error\n");
-		return (1);
+		return (free_memory(args, count));
 	}
 	ci = 0;
 	stk_a = array_create(0);
 	stk_b = array_create(0);
 	while (ci < count)
-	{
-		array_add(stk_a, item_create(ps_create(ft_atoi(args[ci])), ps_free));
-		free(args[ci]);
-		ci++;
-	}
-	free(args);
+		array_add(stk_a, item_create(ps_create(ft_atoi(args[ci++])), ps_free));
+	free_memory(args, count);
 	return (push_swap(stk_a, stk_b));
 }

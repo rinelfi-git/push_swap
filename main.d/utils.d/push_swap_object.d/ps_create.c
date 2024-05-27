@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_rotation.c                                     :+:      :+:    :+:   */
+/*   ps_create.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 12:47:07 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 18:11:13 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 12:04:41 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/27 17:02:58 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
+#include <stdlib.h>
 
-int	get_rotation(t_array *list, t_item *item)
+t_ps	*ps_create(int val)
 {
-	int	index;
-	int	size;
+	t_ps	*new;
 
-	index = item_index_of(list, item);
-	size = array_size(list);
-	if (index < size / 2)
-		return (index);
-	return (index - size);
+	new = (t_ps *) malloc(sizeof(t_ps));
+	if (!new)
+		return (0);
+	new->low = 0;
+	new->high = 0;
+	new->rt = 0;
+	new->val = val;
+	return (new);
 }

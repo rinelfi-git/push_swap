@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort3.c                                            :+:      :+:    :+:   */
+/*   sorts.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 10:36:58 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/27 14:11:47 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 10:36:47 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/27 17:05:49 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include "../../libs/ft_printf/ft_printf.h"
-#include "../../libs/libft/libft.h"
 
-static void	show_rotations(int i, t_item *item)
+void	sort2(t_array *stk)
 {
-	printf("%d - ", i);
-	if (!to_ps(item)->high)
-		printf("[X]");
-	else
-		printf("[%d]", to_ps(to_ps(item)->high)->val);
-	printf(" > {%d} > ", to_ps(item)->val);
-	if (!to_ps(item)->low)
-		printf("[X]\n");
-	else
-		printf("[%d]\n", to_ps(to_ps(item)->low)->val);
+	int	its[2];
+
+	its[0] = *((int *)item_get(stk, 0)->val);
+	its[1] = *((int *)item_get(stk, 1)->val);
+	if (its[1] < its[0])
+		swap(stk, 'a');
 }
 
 void	sort3(t_array *stk)

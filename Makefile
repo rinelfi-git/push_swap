@@ -8,20 +8,16 @@ OPERATIONS = main.d/basics.d/push.c \
 			main.d/basics.d/reverse_rotate.c \
 			main.d/basics.d/reverse_rotates.c \
 			main.d/basics.d/swap.c \
+			main.d/utils.d/push_swap_object.d/ps_create.c \
+			main.d/utils.d/push_swap_object.d/ps_free.c \
+			main.d/utils.d/push_swap_object.d/to_ps.c \
 			main.d/utils.d/count_words.c \
+			main.d/utils.d/ft_abs.c \
 			main.d/utils.d/ft_isnumeric.c \
-			main.d/utils.d/ft_maths.c \
 			main.d/utils.d/get_cheapest.c \
-			main.d/utils.d/get_rotation.c \
-			main.d/utils.d/last_rotate.c \
-			main.d/utils.d/ps_create.c \
-			main.d/utils.d/ps_free.c \
-			main.d/utils.d/push_a_to_b.c \
-			main.d/utils.d/push_b_to_a.c \
 			main.d/utils.d/push_swap.c \
-			main.d/utils.d/sort2.c \
-			main.d/utils.d/sort3.c \
-			main.d/utils.d/to_ps.c \
+			main.d/utils.d/rotate.c \
+			main.d/utils.d/sorts.c \
 			main.d/utils.d/update_nearest.c
 OPERATIONS_O = $(OPERATIONS:.c=.o)
 
@@ -43,7 +39,7 @@ ARRAY_LIB = $(ARRAY_D)/libarray.a
 all	: $(NAME)
 
 $(NAME): main.c $(OPERATIONS_O) $(PRINTF_LIB) $(FT_LIB) $(ARRAY_LIB)
-	$(CC) main.c $(OPERATIONS_O) \
+	$(CC) $(CFLAGS) main.c $(OPERATIONS_O) \
 	-L$(FT_D) -l$(FT_A) \
 	-L$(PRINTF_D) -l$(PRINTF_A) \
 	-L$(ARRAY_D) -l$(ARRAY_A) \
@@ -59,7 +55,7 @@ $(ARRAY_LIB) : $(ARRAY_H)
 	make -C $(ARRAY_D)
 
 %.o					: %.c
-	$(CC) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean :
 	$(DEL) $(OPERATIONS_O)

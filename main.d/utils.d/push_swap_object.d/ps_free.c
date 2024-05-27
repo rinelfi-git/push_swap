@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   to_ps.c                                            :+:      :+:    :+:   */
+/*   ps_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/25 17:40:36 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/25 21:23:45 by erijania         ###   ########.fr       */
+/*   Created: 2024/05/25 12:09:07 by erijania          #+#    #+#             */
+/*   Updated: 2024/05/27 17:03:03 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../push_swap.h"
+#include "../../push_swap.h"
+#include <stdlib.h>
 
-t_ps	*to_ps(t_item *item)
+void	ps_free(void *ps)
 {
-	return ((t_ps *) item->val);
+	t_ps	*cast_ps;
+
+	if (!ps)
+		return ;
+	cast_ps = (t_ps *) ps;
+	free(cast_ps);
 }

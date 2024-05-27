@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 16:17:28 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/27 13:42:09 by erijania         ###   ########.fr       */
+/*   Updated: 2024/05/27 17:11:22 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int		get_rotation(t_array *list, t_item *item);
 void	update_nearest(t_array *src, t_array *dest);
 t_item	*get_cheapest(t_array *stk);
 t_ps	*to_ps(t_item *item);
-void	push_a_to_b(t_array *stk_a, t_array *stk_b);
-void	push_b_to_a(t_array *stk_b, t_array *stk_a);
-void	last_rotate(t_array *stk);
 int		ft_abs(int nbr);
-int		ft_min(int nbr1, int nbr2);
 int		count_words(const char *s, char c);
 int		ft_isnumeric(char *str);
+void	update_rotations(t_array *stk);
+void	do_rotatate_all(t_array *s1, t_item *i1, t_array *s2, t_item *i2);
+void	do_rotate_only(t_array *stk, t_item *it, char op);
+void	do_last_rotate(t_array *stk);
 #endif
