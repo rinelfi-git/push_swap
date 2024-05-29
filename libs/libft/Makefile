@@ -1,4 +1,4 @@
-CC			=	cc
+CC			=	gcc
 CFLAGS		=	-Werror -Wextra -Wall
 AR			=	ar rcs
 NAME		=	libft.a
@@ -54,19 +54,19 @@ BONUS_OBJ	=	$(BONUS_SRC:.c=.o)
 all					: $(NAME)
 
 $(NAME)				: $(HEADER) $(OBJECTS)
-	@$(AR) $(NAME) $(OBJECTS)
+	$(AR) $(NAME) $(OBJECTS)
 
 %.o					: %.c
-	@$(CC) $(CFLAGS) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
 clean 				:
-	@$(DEL) $(OBJECTS)
-	@$(DEL) $(BONUS_OBJ)
+	$(DEL) $(OBJECTS)
+	$(DEL) $(BONUS_OBJ)
 
 fclean				: clean
-	@$(DEL) $(NAME)
+	$(DEL) $(NAME)
 
 re					: fclean all
 
 bonus				: $(NAME) $(BONUS_OBJ)
-	@$(AR) $(NAME) $(BONUS_OBJ)
+	$(AR) $(NAME) $(BONUS_OBJ)

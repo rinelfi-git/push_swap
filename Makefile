@@ -1,4 +1,4 @@
-CC = cc
+CC = gcc
 CFLAGS = -Werror -Wextra -Wall
 NAME = push_swap
 DEL = rm -rf
