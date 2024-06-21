@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/05/27 17:16:58 by erijania         ###   ########.fr       */
+/*   Updated: 2024/06/21 09:42:24 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ static int	is_args_correct(char **arr, int size)
 	while (i < size)
 	{
 		should_stop = !ft_isnumeric(arr[i]);
-		should_stop = should_stop || ft_atoi(arr[i]) >= INT_MAX;
-		should_stop = should_stop || ft_atoi(arr[i]) <= INT_MIN;
+		should_stop = should_stop || ft_atoi(arr[i]) > INT_MAX;
+		should_stop = should_stop || ft_atoi(arr[i]) < INT_MIN;
 		if (should_stop)
 			return (0);
 		i++;
