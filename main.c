@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/07/08 13:26:11 by erijania         ###   ########.fr       */
+/*   Updated: 2024/07/08 14:08:03 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	**copy_args(char **argv, int size)
 
 	arr = (char **) malloc(sizeof(char *) * size);
 	if (!arr)
-		return (0);
+		exit (1);
 	i = -1;
 	while (++i < size && argv[i])
 		arr[i] = ft_strdup(argv[i]);
@@ -34,6 +34,7 @@ static char	**get_args(char **argv, int argc, int *count)
 {
 	char	**arg;
 	int		i;
+	char	*str;
 
 	if (argc == 2)
 	{
@@ -47,7 +48,11 @@ static char	**get_args(char **argv, int argc, int *count)
 	}
 	i = -1;
 	while (++i < *count)
-		arg[i] = ft_strtrim(arg[i], " ");
+	{
+		str = ft_strtrim(arg[i], " ");
+		free(arg[i]);
+		arg[i] = str;
+	}
 	return (arg);
 }
 
@@ -58,7 +63,8 @@ static int	free_memory(char **arr, int size)
 	i = 0;
 	while (i < size)
 		free(arr[i++]);
-	free(arr);
+	if (arr)
+		free(arr);
 	return (0);
 }
 
