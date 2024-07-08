@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 19:10:30 by erijania          #+#    #+#             */
-/*   Updated: 2024/02/23 19:55:37 by erijania         ###   ########.fr       */
+/*   Updated: 2024/07/08 10:32:34 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ static int	ft_isblank(int c)
 	return (c == ' ' || (c >= 9 && c <= 13));
 }
 
-int	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr)
 {
-	int	ret;
-	int	sign;
+	long	ret;
+	int		sign;
 
 	sign = 1;
 	ret = 0;
@@ -33,6 +33,6 @@ int	ft_atoi(const char *nptr)
 		nptr++;
 	}
 	while (*nptr && ft_isdigit(*nptr))
-		ret = ret * 10 + ((int) *(nptr++) - '0');
+		ret = ret * 10 + ((long) *(nptr++) - '0');
 	return (ret * sign);
 }

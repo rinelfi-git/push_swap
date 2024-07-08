@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/06/21 09:42:24 by erijania         ###   ########.fr       */
+/*   Updated: 2024/07/08 10:37:09 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,22 @@ static int	free_memory(char **arr, int size)
 	return (0);
 }
 
+#include <stdio.h>
 static int	is_args_correct(char **arr, int size)
 {
-	int	i;
-	int	j;
-	int	should_stop;
+	int		i;
+	int		j;
+	long	to_int;
 
 	i = 0;
 	while (i < size)
 	{
-		should_stop = !ft_isnumeric(arr[i]);
-		should_stop = should_stop || ft_atoi(arr[i]) > INT_MAX;
-		should_stop = should_stop || ft_atoi(arr[i]) < INT_MIN;
-		if (should_stop)
+		if (!ft_isnumeric(arr[i]))
+			return (0);
+		to_int = ft_atoi(arr[i]);
+		if (to_int > ((long)INT_MAX))
+			return (0);
+		if (to_int < ((long)INT_MIN))
 			return (0);
 		i++;
 	}
@@ -99,7 +102,7 @@ int	main(int argc, char **argv)
 	char	**args;
 
 	if (argc <= 1)
-		return (1);
+		return (0);
 	args = get_args(argv, argc, &count);
 	if (!is_args_correct(args, count))
 	{
@@ -110,7 +113,7 @@ int	main(int argc, char **argv)
 	stk_a = array_create(0);
 	stk_b = array_create(0);
 	while (ci < count)
-		array_add(stk_a, item_create(ps_create(ft_atoi(args[ci++])), ps_free));
+		array_add(stk_a, item_create(ps_create((int)ft_atoi(args[ci++])), ps_free));
 	free_memory(args, count);
 	return (push_swap(stk_a, stk_b));
 }
