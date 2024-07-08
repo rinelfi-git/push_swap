@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/07/08 10:37:09 by erijania         ###   ########.fr       */
+/*   Updated: 2024/07/08 13:25:44 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,15 +62,14 @@ static int	free_memory(char **arr, int size)
 	return (0);
 }
 
-#include <stdio.h>
 static int	is_args_correct(char **arr, int size)
 {
 	int		i;
 	int		j;
 	long	to_int;
 
-	i = 0;
-	while (i < size)
+	i = -1;
+	while (++i < size)
 	{
 		if (!ft_isnumeric(arr[i]))
 			return (0);
@@ -79,7 +78,6 @@ static int	is_args_correct(char **arr, int size)
 			return (0);
 		if (to_int < ((long)INT_MIN))
 			return (0);
-		i++;
 	}
 	i = -1;
 	j = -1;
@@ -95,10 +93,10 @@ static int	is_args_correct(char **arr, int size)
 
 int	main(int argc, char **argv)
 {
-	t_array	*stk_a;
-	t_array	*stk_b;
+	t_array	*stack_list[2];
 	int		ci;
 	int		count;
+	int		nbr;
 	char	**args;
 
 	if (argc <= 1)
@@ -110,10 +108,13 @@ int	main(int argc, char **argv)
 		return (free_memory(args, count));
 	}
 	ci = 0;
-	stk_a = array_create(0);
-	stk_b = array_create(0);
+	stack_list[0] = array_create(0);
+	stack_list[1] = array_create(0);
 	while (ci < count)
-		array_add(stk_a, item_create(ps_create((int)ft_atoi(args[ci++])), ps_free));
+	{
+		nbr = (int)ft_atoi(args[ci++]);
+		array_add(stack_list[0], item_create(ps_create(nbr), ps_free));
+	}
 	free_memory(args, count);
-	return (push_swap(stk_a, stk_b));
+	return (push_swap(stack_list[0], stack_list[1]));
 }
