@@ -6,7 +6,7 @@
 /*   By: erijania <erijania@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 15:09:54 by erijania          #+#    #+#             */
-/*   Updated: 2024/07/08 13:25:44 by erijania         ###   ########.fr       */
+/*   Updated: 2024/07/08 13:26:11 by erijania         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static int	is_args_correct(char **arr, int size)
 
 int	main(int argc, char **argv)
 {
-	t_array	*stack_list[2];
+	t_array	*stack[2];
 	int		ci;
 	int		count;
 	int		nbr;
@@ -108,13 +108,13 @@ int	main(int argc, char **argv)
 		return (free_memory(args, count));
 	}
 	ci = 0;
-	stack_list[0] = array_create(0);
-	stack_list[1] = array_create(0);
+	stack[0] = array_create(0);
+	stack[1] = array_create(0);
 	while (ci < count)
 	{
 		nbr = (int)ft_atoi(args[ci++]);
-		array_add(stack_list[0], item_create(ps_create(nbr), ps_free));
+		array_add(stack[0], item_create(ps_create(nbr), ps_free));
 	}
 	free_memory(args, count);
-	return (push_swap(stack_list[0], stack_list[1]));
+	return (push_swap(stack[0], stack[1]));
 }
